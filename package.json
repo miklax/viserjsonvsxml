@@ -14,5 +14,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/miklax/viserjsonvsxml/issues"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
   }
 }

@@ -15,18 +15,14 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 //instanca rutera
-var apiRoute = express.Router();
-
-apiRoute.post('/json/:param', function(req, res){
-  //TODO frati fajl - uzmi parametar o velicini
-});
-
-apiRoute.get('/xml', function(req, res){
-  //vrati xml
-});
-
+var apiRoute = require('./app/routes/api')(app, express);
 app.use('/api', apiRoute);
 
+//default ruta - index
 app.get('*', function(req, res){
   res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
+
+//pokretanje servera na portu 3000
+app.listen(3000);
+console.log('server pokrenut na portu 3000');
