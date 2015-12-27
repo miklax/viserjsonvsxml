@@ -6,5 +6,8 @@ angular.module('mainCtrl', ['getDataService'])
   var  jsonTabela = [];
   var  xmlTabela = [];
 
-
-})
+  Merenja.getJson(brojObj. vm.merenjaData)
+    .success(function(data){
+      //logika da napuni niz
+    });
+});
