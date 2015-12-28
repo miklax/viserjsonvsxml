@@ -5,7 +5,7 @@ angular.module('getDataService', [])
   var merenjaFactory = {};
 
   merenjaFactory.getJson = function(brojObj){
-    return $http.get('/api/json/' + brojObj)
+    return $http.get('/api/json/' + brojObj);
   };
 
   return merenjaFactory;

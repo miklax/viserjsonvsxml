@@ -1,4 +1,4 @@
-angular.module('app.routes', [ngRoute])
-.config(function($routeProvider, $locationProvider){
-  // .when('/')
-});
+// angular.module('app.routes', ['ngRoute'])
+// .config(function($routeProvider, $locationProvider){
+//   // .when('/')
+// });

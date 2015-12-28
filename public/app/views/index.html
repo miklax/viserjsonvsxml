@@ -7,14 +7,20 @@
   <!-- purecss.io -->
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
+  <!-- JS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script> -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
   <!-- stilovi -->
-  <link rel="stylesheet" href="assets/styleglobal.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- <link rel="stylesheet" href="assets/styleglobal.css"> -->
+  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
   <!-- ANGULAR linkovi-->
   <script src="app/controllers/mainCtrl.js" charset="utf-8"></script>
   <script src="app/services/getDataService.js" charset="utf-8"></script>
-  <script src="app/app.routes.js" charset="utf-8"></script>
+  <!-- <script src="app/app.routes.js" charset="utf-8"></script> -->
   <script src="app/app.js" charset="utf-8"></script>
 
 </head>
@@ -37,7 +43,7 @@
             <td>{{ }}</td>
             <td></td>
             <td>
-              <a href="#" class="pure-button">Pokreni test</a>
+              <a href="#" class="pure-button" ng-click="merenja.getJson(2000)">Pokreni test</a>
             </td>
           </tr>
           <tr>

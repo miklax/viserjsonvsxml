@@ -1,5 +1,6 @@
 angular.module('benchApp', [
-  'app.routes'
-])
-
-.config();
+  'mainCtrl',
+  'getDataService'
+]);
+//
+// .config();
