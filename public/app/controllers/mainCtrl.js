@@ -3,12 +3,15 @@ angular.module('mainCtrl', ['getDataService'])
 .controller('merenjaController', function(Merenja){
   var vm = this;
 
-  var  jsonTabela = [];
-  var  xmlTabela = [];
+  vm.jsonTabela = [];
+  vm.xmlTabela = [];
 
-  Merenja.getJson(brojObj)
+  vm.getJsonMerenja = function(brojObj){
+
+    Merenja.getJson(brojObj)
     .success(function(data){
-      jsonTabela = data;
-      console.log(jsonTabela);
+      vm.jsonTabela = data;
+      console.log(vm.jsonTabela);
     });
+  };
 });
