@@ -10,8 +10,8 @@ angular.module('mainCtrl', ['getDataService'])
 
     Merenja.getJson(brojObj)
     .success(function(data){
-      vm.jsonTabela = data;
-      console.log(vm.jsonTabela);
+        vm.jsonTabela = data;
+        console.log(vm.jsonTabela);
     });
   };
 });

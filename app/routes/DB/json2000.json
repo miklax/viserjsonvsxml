@@ -1,0 +1,22 @@
+[
+  {
+    "index": 0,
+    "age": 30,
+    "name": "Santana Cline",
+    "email": "santanacline@orbin.com",
+    "phone": "(836) 421-3721",
+    "address": "563 Hanover Place, Russellville, Tennessee, 7212",
+    "about": "Voluptate nisi aliquip velit est tempor laboris ipsum. Aliqua pariatur commodo duis minim in incididunt consectetur. Mollit commodo consequat proident sit laborum eiusmod ullamco veniam ut consequat culpa voluptate duis reprehenderit. In dolor cupidatat officia amet nulla. Tempor pariatur aute velit dolore adipisicing cillum fugiat nisi ex magna eu est elit mollit.\r\n",
+    "registered": "2014-03-28T07:43:43 -01:00"
+  },
+  {
+    "index": 1,
+    "age": 35,
+    "name": "Church Rowe",
+    "email": "churchrowe@orbin.com",
+    "phone": "(958) 529-3598",
+    "address": "339 Havens Place, Franklin, New Hampshire, 3841",
+    "about": "Lorem ex ipsum dolor nisi eiusmod fugiat culpa consequat occaecat quis. Elit excepteur ea culpa do cillum laborum. Laborum amet qui quis adipisicing do nostrud amet velit. Anim nulla est exercitation nisi officia aliqua excepteur ea tempor mollit. Sit enim reprehenderit id anim anim ea velit. Id duis esse irure amet eiusmod cillum sunt est commodo exercitation. Irure sint cupidatat consectetur reprehenderit in excepteur esse.\r\n",
+    "registered": "2015-11-29T12:35:33 -01:00"
+  }
+]
