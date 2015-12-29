@@ -8,6 +8,14 @@ var app     = express();
 var morgan  = require('morgan');
 var path    = require('path');
 
+//CORS
+app.use(function(req, res, next){
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Velicina");
+  next();
+});
+
 //logovanje u konzolu
 app.use(morgan('dev'));
 

@@ -9,9 +9,10 @@ angular.module('mainCtrl', ['getDataService'])
   vm.getJsonMerenja = function(brojObj){
 
     Merenja.getJson(brojObj)
-    .success(function(data){
+    .success(function(data, status, headers, config){
         vm.jsonTabela = data;
         console.log(vm.jsonTabela);
+        console.log(headers('Velicina'));
     });
   };
 });
