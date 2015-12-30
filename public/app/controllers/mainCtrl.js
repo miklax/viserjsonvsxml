@@ -27,7 +27,28 @@ angular.module('mainCtrl', ['getDataService'])
         vm.jsonPodaci = data;
         console.log(vm.jsonPodaci);
         console.log(headers('Velicina'));
-        vm.jsonTabela[0].velicina = headers('Velicina');
+
+        switch (brojObj) {
+          case 2000:
+            vm.jsonTabela[0].velicina = headers('Velicina');
+            break;
+          case 4000:
+            vm.jsonTabela[1].velicina = headers('Velicina');
+            break;
+          case 6000:
+            vm.jsonTabela[2].velicina = headers('Velicina');
+            break;
+          case 8000:
+            vm.jsonTabela[3].velicina = headers('Velicina');
+            break;
+          case 10000:
+            vm.jsonTabela[4].velicina = headers('Velicina');
+            break;
+          default:
+            console.log('Pogresni parametri');
+        }
+
+
     });
   };
 });
