@@ -22,33 +22,41 @@ angular.module('mainCtrl', ['getDataService'])
 
   vm.getJsonMerenja = function(brojObj){
 
+    var vremeStart = Date.now();
+
     Merenja.getJson(brojObj)
     .success(function(data, status, headers, config){
         vm.jsonPodaci = data;
         console.log(vm.jsonPodaci);
         console.log(headers('Velicina'));
 
+        var vremeStop = Date.now();
+        var odziv = vremeStop - vremeStart;
+
         switch (brojObj) {
           case 2000:
             vm.jsonTabela[0].velicina = headers('Velicina');
+            vm.jsonTabela[0].odziv = odziv;
             break;
           case 4000:
             vm.jsonTabela[1].velicina = headers('Velicina');
+            vm.jsonTabela[1].odziv = odziv;
             break;
           case 6000:
             vm.jsonTabela[2].velicina = headers('Velicina');
+            vm.jsonTabela[2].odziv = odziv;
             break;
           case 8000:
             vm.jsonTabela[3].velicina = headers('Velicina');
+            vm.jsonTabela[3].odziv = odziv;
             break;
           case 10000:
             vm.jsonTabela[4].velicina = headers('Velicina');
+            vm.jsonTabela[4].odziv = odziv;
             break;
           default:
             console.log('Pogresni parametri');
         }
-
-
     });
   };
 });
