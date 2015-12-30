@@ -20,6 +20,12 @@ angular.module('mainCtrl', ['getDataService'])
   vm.jsonTabela[3] = new objMerenja(); //8000 obj
   vm.jsonTabela[4] = new objMerenja(); //10000 obj
 
+  vm.xmlTabela[0] = new objMerenja(); //2000
+  vm.xmlTabela[1] = new objMerenja(); //4000
+  vm.xmlTabela[2] = new objMerenja(); //6000
+  vm.xmlTabela[3] = new objMerenja(); //8000
+  vm.xmlTabela[4] = new objMerenja(); //10000
+
   vm.getJsonMerenja = function(brojObj){
 
     var vremeStart = Date.now();
@@ -53,6 +59,45 @@ angular.module('mainCtrl', ['getDataService'])
           case 10000:
             vm.jsonTabela[4].velicina = headers('Velicina');
             vm.jsonTabela[4].odziv = odziv;
+            break;
+          default:
+            console.log('Pogresni parametri');
+        }
+    });
+  };
+
+  vm.getXmlMerenja = function(brojObj){
+
+    var vremeStart = Date.now();
+
+    Merenja.getXml(brojObj)
+    .success(function(data, status, headers, config){
+        vm.xmlPodaci = data;
+        console.log(vm.xmlPodaci);
+
+        var vremeStop = Date.now();
+        var odziv = vremeStop - vremeStart;
+
+        switch (brojObj) {
+          case 2000:
+            vm.xmlTabela[0].velicina = headers('Velicina');
+            vm.xmlTabela[0].odziv = odziv;
+            break;
+          case 4000:
+            vm.xmlTabela[1].velicina = headers('Velicina');
+            vm.xmlTabela[1].odziv = odziv;
+            break;
+          case 6000:
+            vm.xmlTabela[2].velicina = headers('Velicina');
+            vm.xmlTabela[2].odziv = odziv;
+            break;
+          case 8000:
+            vm.xmlTabela[3].velicina = headers('Velicina');
+            vm.xmlTabela[3].odziv = odziv;
+            break;
+          case 10000:
+            vm.xmlTabela[4].velicina = headers('Velicina');
+            vm.xmlTabela[4].odziv = odziv;
             break;
           default:
             console.log('Pogresni parametri');

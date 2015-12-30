@@ -8,6 +8,10 @@ angular.module('getDataService', [])
     return $http.get('/api/json/' + brojObj);
   };
 
+  merenjaFactory.getXml = function(brojObj){
+    return $http.get('/api/xml/' + brojObj);
+  };
+
   return merenjaFactory;
 
 
