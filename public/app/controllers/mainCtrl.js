@@ -69,10 +69,13 @@ angular.module('mainCtrl', ['getDataService'])
   vm.getXmlMerenja = function(brojObj){
 
     var vremeStart = Date.now();
+    var x2js = new X2JS();
+    // var xmlText = "<MyRoot><test>Success</test><test2><item>val1</item><item>val2</item></test2></MyRoot>";
+    // var jsonObj = x2js.xml_str2json( xmlText );
 
     Merenja.getXml(brojObj)
     .success(function(data, status, headers, config){
-        vm.xmlPodaci = data;
+        vm.xmlPodaci = x2js.xml2json(data).asArray();
         console.log(vm.xmlPodaci);
 
         var vremeStop = Date.now();
