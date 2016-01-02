@@ -22,7 +22,14 @@ module.exports = function(app, express){
 
   //XML endpoint
   apiRouter.get('/xml/:uzorak', function(req, res){
-    res.sendFile(__dirname + '../DB/xml' + req.params.uzorak + '.xml');
+
+    var filename = __dirname + '/DB/xml' + req.params.uzorak + '.xml';
+    var velicina = getFilesizeInBytes(filename);
+
+    //U header od responsa poslati velicinu fajla
+    res.set('Velicina', velicina);
+    //slanje xml datoteke
+    res.sendFile(filename);
   });
 
 function getFilesizeInBytes(filename) {
