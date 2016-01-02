@@ -1,7 +1,7 @@
 angular.module('benchApp', [
   'mainCtrl',
-  'getDataService',
-  'googlechart'
+  "googlechart",
+  "googlechart-docs"
 ]);
 //
 // .config();

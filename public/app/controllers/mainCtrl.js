@@ -1,110 +1,54 @@
-angular.module('mainCtrl', ['getDataService', 'googlechart'])
+angular.module('mainCtrl', ["googlechart", "googlechart-docs"])
 
-.controller('merenjaController', function(Merenja){
-  var vm = this;
+.controller('merenjaController', function($scope){
+  $scope.chartObject = {};
 
-  vm.jsonTabela = [];
-  vm.xmlTabela = [];
+        $scope.secondRow = [
+            {v: new Date(2314, 2, 16)},
+            {v: 13},
+            {v: 'Lalibertines'},
+            {v: 'They are very tall'},
+            {v: 25},
+            {v: 'Gallantors'},
+            {v: 'First Encounter'}
+        ];
 
-  vm.jsonPodaci = [];
-  vm.xmlPodaci = [];
 
-  function objMerenja(){
-    this.odziv = 0;
-    this.velicina = 0;
-  }
+        $scope.chartObject.type = "AnnotationChart";
 
-  vm.jsonTabela[0] = new objMerenja(); //2000 obj
-  vm.jsonTabela[1] = new objMerenja(); //4000 obj
-  vm.jsonTabela[2] = new objMerenja(); //6000 obj
-  vm.jsonTabela[3] = new objMerenja(); //8000 obj
-  vm.jsonTabela[4] = new objMerenja(); //10000 obj
+        $scope.chartObject.data = {"cols": [
+            {id: "month", label: "Month", type: "date"},
+            {id: "kepler-data", label: "Kepler-22b mission", type: "number"},
+            {id: "kepler-annot", label: "Kepler-22b Annotation Title", type: "string"},
+            {id: "kepler-annot-body", label: "Kepler-22b Annotation Text", type: "string"},
+            {id: "desktop-data", label: "Gliese mission", type: "number"},
+            {id: "desktop-annot", label: "Gliese Annotation Title", type: "string"},
+            {id: "desktop-annot-body", label: "Gliese Annotaioon Text", type: "string"}
+        ], "rows": [
+            {c: [
+                {v: new Date(2314, 2, 15)},
+                {v: 19 },
+                {v: 'Lalibertines'},
+                {v: 'First encounter'},
+                {v: 7},
+                {v: undefined},
+                {v: undefined}
+            ]},
+            {c: $scope.secondRow},
+            {c: [
+                {v: new Date(2314, 2, 17)},
+                {v: 0},
+                {v: 'Lalibertines'},
+                {v: 'All crew lost'},
+                {v: 28},
+                {v: 'Gallantors'},
+                {v: 'Omniscience achieved'}
 
-  vm.xmlTabela[0] = new objMerenja(); //2000
-  vm.xmlTabela[1] = new objMerenja(); //4000
-  vm.xmlTabela[2] = new objMerenja(); //6000
-  vm.xmlTabela[3] = new objMerenja(); //8000
-  vm.xmlTabela[4] = new objMerenja(); //10000
+            ]}
+        ]};
 
-  vm.getJsonMerenja = function(brojObj){
-
-    var vremeStart = Date.now();
-
-    Merenja.getJson(brojObj)
-    .success(function(data, status, headers, config){
-        vm.jsonPodaci = data;
-        console.log(vm.jsonPodaci);
-        console.log(headers('Velicina'));
-
-        var vremeStop = Date.now();
-        var odziv = vremeStop - vremeStart;
-
-        switch (brojObj) {
-          case 2000:
-            vm.jsonTabela[0].velicina = headers('Velicina');
-            vm.jsonTabela[0].odziv = odziv;
-            break;
-          case 4000:
-            vm.jsonTabela[1].velicina = headers('Velicina');
-            vm.jsonTabela[1].odziv = odziv;
-            break;
-          case 6000:
-            vm.jsonTabela[2].velicina = headers('Velicina');
-            vm.jsonTabela[2].odziv = odziv;
-            break;
-          case 8000:
-            vm.jsonTabela[3].velicina = headers('Velicina');
-            vm.jsonTabela[3].odziv = odziv;
-            break;
-          case 10000:
-            vm.jsonTabela[4].velicina = headers('Velicina');
-            vm.jsonTabela[4].odziv = odziv;
-            break;
-          default:
-            console.log('Pogresni parametri');
-        }
+        $scope.chartObject.options = {
+            displayAnnotations: true
+        };
     });
-  };
-
-  vm.getXmlMerenja = function(brojObj){
-
-    var vremeStart = Date.now();
-    var x2js = new X2JS();
-    // var xmlText = "<MyRoot><test>Success</test><test2><item>val1</item><item>val2</item></test2></MyRoot>";
-    // var jsonObj = x2js.xml_str2json( xmlText );
-
-    Merenja.getXml(brojObj)
-    .success(function(data, status, headers, config){
-        vm.xmlPodaci = x2js.xml2json(data);
-        console.log(vm.xmlPodaci);
-
-        var vremeStop = Date.now();
-        var odziv = vremeStop - vremeStart;
-
-        switch (brojObj) {
-          case 2000:
-            vm.xmlTabela[0].velicina = headers('Velicina');
-            vm.xmlTabela[0].odziv = odziv;
-            break;
-          case 4000:
-            vm.xmlTabela[1].velicina = headers('Velicina');
-            vm.xmlTabela[1].odziv = odziv;
-            break;
-          case 6000:
-            vm.xmlTabela[2].velicina = headers('Velicina');
-            vm.xmlTabela[2].odziv = odziv;
-            break;
-          case 8000:
-            vm.xmlTabela[3].velicina = headers('Velicina');
-            vm.xmlTabela[3].odziv = odziv;
-            break;
-          case 10000:
-            vm.xmlTabela[4].velicina = headers('Velicina');
-            vm.xmlTabela[4].odziv = odziv;
-            break;
-          default:
-            console.log('Pogresni parametri');
-        }
-    });
-  };
-});
+})();
