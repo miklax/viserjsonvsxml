@@ -75,7 +75,7 @@ angular.module('mainCtrl', ['getDataService'])
 
     Merenja.getXml(brojObj)
     .success(function(data, status, headers, config){
-        vm.xmlPodaci = x2js.xml2json(data).asArray();
+        vm.xmlPodaci = x2js.xml2json(data);
         console.log(vm.xmlPodaci);
 
         var vremeStop = Date.now();
