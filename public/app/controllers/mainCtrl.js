@@ -1,4 +1,4 @@
-angular.module('mainCtrl', ['getDataService'])
+angular.module('mainCtrl', ['getDataService', 'googlechart'])
 
 .controller('merenjaController', function(Merenja){
   var vm = this;
