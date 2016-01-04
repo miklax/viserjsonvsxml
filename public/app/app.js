@@ -1,6 +1,7 @@
 angular.module('benchApp', [
   'mainCtrl',
-  'getDataService'
+  'getDataService',
+  'chart.js'
 ]);
 //
 // .config();

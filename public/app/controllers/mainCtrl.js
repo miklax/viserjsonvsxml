@@ -1,6 +1,6 @@
-angular.module('mainCtrl', ['getDataService'])
+angular.module('mainCtrl', ['getDataService', 'chart.js'])
 
-.controller('merenjaController', function(Merenja){
+.controller('merenjaController', function($scope, Merenja){
   var vm = this;
 
   vm.jsonTabela = [];
@@ -63,6 +63,24 @@ angular.module('mainCtrl', ['getDataService'])
           default:
             console.log('Pogresni parametri');
         }
+
+        var nizXml = [1, 2, 3, 4, 5];
+
+        $scope.labels = ["2000", "4000", "6000", "8000", "10000"];
+        $scope.series = ['JSON merenja', 'XML merenja'];
+        $scope.data = [
+          [
+            vm.jsonTabela[0].odziv,
+            vm.jsonTabela[1].odziv,
+            vm.jsonTabela[2].odziv,
+            vm.jsonTabela[3].odziv,
+            vm.jsonTabela[4].odziv,
+          ],
+          nizXml];
+        $scope.onClick = function (points, evt) {
+          console.log(points, evt);
+        };
+
     });
   };
 
@@ -107,4 +125,23 @@ angular.module('mainCtrl', ['getDataService'])
         }
     });
   };
+
+  // GRAFIK
+
+  // var nizXml = [1, 2, 3, 4, 5];
+  //
+  // $scope.labels = ["2000", "4000", "6000", "8000", "10000"];
+  // $scope.series = ['JSON merenja', 'XML merenja'];
+  // $scope.data = [
+  //   [
+  //     vm.jsonTabela[0].odziv,
+  //     vm.jsonTabela[1].odziv,
+  //     vm.jsonTabela[2].odziv,
+  //     vm.jsonTabela[3].odziv,
+  //     vm.jsonTabela[4].odziv,
+  //   ],
+  //   nizXml];
+  // $scope.onClick = function (points, evt) {
+  //   console.log(points, evt);
+  // };
 });

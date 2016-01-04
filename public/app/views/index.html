@@ -21,6 +21,9 @@
   <!-- ANGULAR linkovi-->
   <script src="app/controllers/mainCtrl.js" charset="utf-8"></script>
   <script src="app/services/getDataService.js" charset="utf-8"></script>
+  <script src="bower_components/Chart.js/Chart.min.js" charset="utf-8"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+
   <!-- <script src="app/app.routes.js" charset="utf-8"></script> -->
   <script src="app/app.js" charset="utf-8"></script>
 
@@ -28,6 +31,14 @@
 <body ng-app="benchApp">
   <div class="container pure-g" ng-controller="merenjaController as merenja">
     <div class="pure-u-1">
+
+      <!-- grafik <-->
+      <canvas id="line" class="chart chart-line" chart-data="data"
+        chart-labels="labels" chart-legend="true" chart-series="series"
+        chart-click="onClick" >
+      </canvas>
+
+
       <h3>JSON</h3>
       <table class="pure-table tabela">
         <thead>
