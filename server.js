@@ -21,6 +21,8 @@ app.use(morgan('dev'));
 
 //staticka lokacija
 app.use(express.static(__dirname + '/public'));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
 
 //instanca rutera
 var apiRoute = require('./app/routes/api')(app, express);
