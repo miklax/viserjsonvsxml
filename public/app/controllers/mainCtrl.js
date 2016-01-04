@@ -26,6 +26,27 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
   vm.xmlTabela[3] = new objMerenja(); //8000
   vm.xmlTabela[4] = new objMerenja(); //10000
 
+
+  // GRAFIK
+  vm.grafik = function(nizJson, nizXml){
+    // var nizXml = [1, 2, 3, 4, 5];
+    console.log(nizJson);
+    console.log(nizXml);
+
+    $scope.labels = ["2000", "4000", "6000", "8000", "10000"];
+    $scope.series = ['JSON merenja', 'XML merenja'];
+    $scope.data = [nizJson, nizXml];
+    $scope.onClick = function (points, evt) {
+      console.log(points, evt);
+    };
+  };
+
+  var izdvojOdziv = function(niz){
+      return niz.map(function(noviNiz){ return noviNiz.odziv; });
+  };
+
+  vm.grafik(izdvojOdziv(vm.jsonTabela), izdvojOdziv(vm.xmlTabela));
+
   vm.getJsonMerenja = function(brojObj){
 
     var vremeStart = Date.now();
@@ -63,24 +84,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
           default:
             console.log('Pogresni parametri');
         }
-
-        var nizXml = [1, 2, 3, 4, 5];
-
-        $scope.labels = ["2000", "4000", "6000", "8000", "10000"];
-        $scope.series = ['JSON merenja', 'XML merenja'];
-        $scope.data = [
-          [
-            vm.jsonTabela[0].odziv,
-            vm.jsonTabela[1].odziv,
-            vm.jsonTabela[2].odziv,
-            vm.jsonTabela[3].odziv,
-            vm.jsonTabela[4].odziv,
-          ],
-          nizXml];
-        $scope.onClick = function (points, evt) {
-          console.log(points, evt);
-        };
-
+        vm.grafik(izdvojOdziv(vm.jsonTabela), izdvojOdziv(vm.xmlTabela));
     });
   };
 
@@ -90,6 +94,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
     var x2js = new X2JS();
     // var xmlText = "<MyRoot><test>Success</test><test2><item>val1</item><item>val2</item></test2></MyRoot>";
     // var jsonObj = x2js.xml_str2json( xmlText );
+
 
     Merenja.getXml(brojObj)
     .success(function(data, status, headers, config){
@@ -123,25 +128,9 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
           default:
             console.log('Pogresni parametri');
         }
+        vm.grafik(izdvojOdziv(vm.jsonTabela), izdvojOdziv(vm.xmlTabela));
+
     });
+
   };
-
-  // GRAFIK
-
-  // var nizXml = [1, 2, 3, 4, 5];
-  //
-  // $scope.labels = ["2000", "4000", "6000", "8000", "10000"];
-  // $scope.series = ['JSON merenja', 'XML merenja'];
-  // $scope.data = [
-  //   [
-  //     vm.jsonTabela[0].odziv,
-  //     vm.jsonTabela[1].odziv,
-  //     vm.jsonTabela[2].odziv,
-  //     vm.jsonTabela[3].odziv,
-  //     vm.jsonTabela[4].odziv,
-  //   ],
-  //   nizXml];
-  // $scope.onClick = function (points, evt) {
-  //   console.log(points, evt);
-  // };
 });
