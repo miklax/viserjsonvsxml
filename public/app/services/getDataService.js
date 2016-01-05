@@ -14,6 +14,4 @@ angular.module('getDataService', [])
 
   return merenjaFactory;
 
-
-
 });
