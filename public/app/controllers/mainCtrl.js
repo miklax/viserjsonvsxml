@@ -47,6 +47,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
 
   vm.grafik(izdvojOdziv(vm.jsonTabela), izdvojOdziv(vm.xmlTabela));
 
+  // JSON MERENJA
   vm.getJsonMerenja = function(brojObj){
 
     var vremeStart = Date.now();
@@ -88,6 +89,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
     });
   };
 
+  // XML MERENJA
   vm.getXmlMerenja = function(brojObj){
 
     var vremeStart = Date.now();
