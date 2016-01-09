@@ -98,7 +98,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
 
     Merenja.getXml(brojObj)
     .success(function(data, status, headers, config){
-        vm.xmlPodaci = x2js.xml2json(data);
+        vm.xmlPodaci = x2js.xml_str2json(data);
         console.log(vm.xmlPodaci);
 
         var vremeStop = Date.now();
