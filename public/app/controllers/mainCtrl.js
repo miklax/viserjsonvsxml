@@ -102,6 +102,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
     .success(function(data, status, headers, config){
         vm.xmlPodaci = x2js.xml2json(data);
         console.log(vm.xmlPodaci);
+        console.log(data);
 
         var vremeStop = Date.now();
         var odziv = vremeStop - vremeStart;
