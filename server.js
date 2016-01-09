@@ -34,5 +34,5 @@ app.get('*', function(req, res){
 });
 
 //pokretanje servera na portu 3000
-app.listen(3000);
+app.listen(process.env.PORT || 5000);
 console.log('server pokrenut na portu 3000');
