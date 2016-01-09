@@ -1,4 +1,15 @@
 angular.module('mainCtrl', ['getDataService', 'chart.js'])
+.config(['ChartJsProvider', function (ChartJsProvider) {
+    // Configure all charts
+    ChartJsProvider.setOptions({
+      colours: ['#33ccff', '#ffcc66'],
+      responsive: true
+    });
+    // Configure all line charts
+    ChartJsProvider.setOptions('Line', {
+      datasetFill: true
+    });
+  }])
 
 .controller('merenjaController', function($scope, Merenja){
   var vm = this;
@@ -28,14 +39,18 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
 
 
   // GRAFIK
-  vm.grafik = function(nizJson, nizXml){
+  vm.grafik = function(jsonTabela, xmlTabela){
     // var nizXml = [1, 2, 3, 4, 5];
-    console.log(nizJson);
-    console.log(nizXml);
+
+    var odzivJson = izdvojOdziv(jsonTabela);
+    var odzivXml = izdvojOdziv(xmlTabela);
+    var velicinaJson = izdvojVelicinu(jsonTabela);
+    var velicinaXml = izdvojVelicinu(xmlTabela);
 
     $scope.labels = ["2000", "4000", "6000", "8000", "10000"];
     $scope.series = ['JSON merenja', 'XML merenja'];
-    $scope.data = [nizJson, nizXml];
+    $scope.dataOdziv = [odzivJson, odzivXml];
+    $scope.dataVelicina = [velicinaJson, velicinaXml];
     $scope.onClick = function (points, evt) {
       console.log(points, evt);
     };
@@ -45,7 +60,11 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
       return niz.map(function(noviNiz){ return noviNiz.odziv; });
   };
 
-  vm.grafik(izdvojOdziv(vm.jsonTabela), izdvojOdziv(vm.xmlTabela));
+  var izdvojVelicinu = function(niz){
+      return niz.map(function(noviNiz){ return noviNiz.velicina; });
+  };
+
+  vm.grafik(vm.jsonTabela, vm.xmlTabela);
 
   vm.getJsonMerenja = function(brojObj){
 
@@ -84,7 +103,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
           default:
             console.log('Pogresni parametri');
         }
-        vm.grafik(izdvojOdziv(vm.jsonTabela), izdvojOdziv(vm.xmlTabela));
+        vm.grafik(vm.jsonTabela, vm.xmlTabela);
     });
   };
 
@@ -128,7 +147,7 @@ angular.module('mainCtrl', ['getDataService', 'chart.js'])
           default:
             console.log('Pogresni parametri');
         }
-        vm.grafik(izdvojOdziv(vm.jsonTabela), izdvojOdziv(vm.xmlTabela));
+        vm.grafik(vm.jsonTabela, vm.xmlTabela);
 
     });
 

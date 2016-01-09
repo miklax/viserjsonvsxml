@@ -1,8 +1,15 @@
 .container{
-  max-width: 600px;
+  width: 95%;
   margin: 0 auto;
 }
 
-.tabela{
+.tabela-json, .tabela-xml{
   width: 100%;
+}
+
+.tabela-json thead{
+  background-color: #33ccff;
+}
+.tabela-xml thead{
+  background-color: #ffcc66;
 }

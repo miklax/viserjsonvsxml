@@ -30,125 +30,151 @@
 </head>
 <body ng-app="benchApp">
   <div class="container pure-g" ng-controller="merenjaController as merenja">
-    <div class="pure-u-1">
 
-      <!-- grafik <-->
-      <canvas id="line" class="chart chart-line" chart-data="data"
-        chart-labels="labels" chart-legend="true" chart-series="series"
-        chart-click="onClick" >
-      </canvas>
+    <!-- GRAFICI -->
 
+      <div class="pure-u-1-2">
+        <!-- grafik ODZIV<-->
+        <canvas id="line-odziv" class="chart chart-line" chart-data="dataOdziv"
+          chart-labels="labels" chart-legend="false" chart-series="series"
+          chart-click="onClick" >
+        </canvas>
+      </div>
 
-      <h3>JSON</h3>
-      {{merenja.proba}}
-      <table class="pure-table tabela">
-        <thead>
-          <tr>
-            <th>br. objekata</th>
-            <th>Velicina (bajtova)</th>
-            <th>Odziv (ms)</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2000</td>
-            <td>{{merenja.jsonTabela[0].velicina}} B</td>
-            <td>{{merenja.jsonTabela[0].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(2000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>4000</td>
-            <td>{{merenja.jsonTabela[1].velicina}} B</td>
-            <td>{{merenja.jsonTabela[1].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(4000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>6000</td>
-            <td>{{merenja.jsonTabela[2].velicina}} B</td>
-            <td>{{merenja.jsonTabela[2].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(6000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>8000</td>
-            <td>{{merenja.jsonTabela[3].velicina}} B</td>
-            <td>{{merenja.jsonTabela[3].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(8000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>10000</td>
-            <td>{{merenja.jsonTabela[4].velicina}} B</td>
-            <td>{{merenja.jsonTabela[4].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(10000)">Pokreni test</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <h3>XML</h3>
-      <table class="pure-table tabela">
-        <thead>
-          <tr>
-            <th>br. objekata</th>
-            <th>Velicina (mb)</th>
-            <th>Odziv (ms)</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2000</td>
-            <td>{{merenja.xmlTabela[0].velicina}} B</td>
-            <td>{{merenja.xmlTabela[0].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(2000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>4000</td>
-            <td>{{merenja.xmlTabela[1].velicina}} B</td>
-            <td>{{merenja.xmlTabela[1].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(4000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>6000</td>
-            <td>{{merenja.xmlTabela[2].velicina}} B</td>
-            <td>{{merenja.xmlTabela[2].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(6000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>8000</td>
-            <td>{{merenja.xmlTabela[3].velicina}} B</td>
-            <td>{{merenja.xmlTabela[3].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(8000)">Pokreni test</a>
-            </td>
-          </tr>
-          <tr>
-            <td>10000</td>
-            <td>{{merenja.xmlTabela[4].velicina}} B</td>
-            <td>{{merenja.xmlTabela[4].odziv}}</td>
-            <td>
-              <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(10000)">Pokreni test</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="pure-u-1-2">
+        <!-- grafik VELICINA <-->
+        <canvas id="line-velicina" class="chart chart-line" chart-data="dataVelicina"
+          chart-labels="labels" chart-legend="false" chart-series="series"
+          chart-click="onClick" >
+        </canvas>
+      </div>
 
+      <!-- TABELE -->
+      <div class="pure-u-1-2">
+
+        <table class="pure-table tabela-json">
+          <thead>
+            <tr>
+              <th>br. objekata</th>
+              <th>Velicina (bajtova)</th>
+              <th>Odziv (ms)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2000</td>
+              <td>{{merenja.jsonTabela[0].velicina}} B</td>
+              <td>{{merenja.jsonTabela[0].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(2000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>4000</td>
+              <td>{{merenja.jsonTabela[1].velicina}} B</td>
+              <td>{{merenja.jsonTabela[1].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(4000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>6000</td>
+              <td>{{merenja.jsonTabela[2].velicina}} B</td>
+              <td>{{merenja.jsonTabela[2].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(6000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>8000</td>
+              <td>{{merenja.jsonTabela[3].velicina}} B</td>
+              <td>{{merenja.jsonTabela[3].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(8000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>10000</td>
+              <td>{{merenja.jsonTabela[4].velicina}} B</td>
+              <td>{{merenja.jsonTabela[4].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getJsonMerenja(10000)">Pokreni test</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- XML Tabela -->
+      <div class="pure-u-1-2">
+        <table class="pure-table tabela-xml">
+          <thead>
+            <tr>
+              <th>br. objekata</th>
+              <th>Velicina (mb)</th>
+              <th>Odziv (ms)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2000</td>
+              <td>{{merenja.xmlTabela[0].velicina}} B</td>
+              <td>{{merenja.xmlTabela[0].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(2000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>4000</td>
+              <td>{{merenja.xmlTabela[1].velicina}} B</td>
+              <td>{{merenja.xmlTabela[1].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(4000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>6000</td>
+              <td>{{merenja.xmlTabela[2].velicina}} B</td>
+              <td>{{merenja.xmlTabela[2].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(6000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>8000</td>
+              <td>{{merenja.xmlTabela[3].velicina}} B</td>
+              <td>{{merenja.xmlTabela[3].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(8000)">Pokreni test</a>
+              </td>
+            </tr>
+            <tr>
+              <td>10000</td>
+              <td>{{merenja.xmlTabela[4].velicina}} B</td>
+              <td>{{merenja.xmlTabela[4].odziv}}</td>
+              <td>
+                <a href="#" class="pure-button" ng-click="merenja.getXmlMerenja(10000)">Pokreni test</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pure-u-1">
+        <h3>JSON - leva tabela, XML - desna tabela</h3>
+        <p>Test obuhvata preuzimanje podataka od API-ja u JSON ili XML formi.
+          Svi dobijeni podaci se obradjuju i popunjavaju nizove objekata. Levi grafik
+        prikazuje brzinu odziva od API koji se nalazi na serverskoj strani i vreme
+        koliko je potrebno da se podaci obrade.
+      Desni grafik prikazuje velicine preuzetih podataka.</p>
+      </div>
   </div>
 
-</div>
+  <div class="site-futer">
+    VISER, 2016. Mihail Miklasevskij NRTD 4/12
+  </div>
+
 </body>
 </html>
